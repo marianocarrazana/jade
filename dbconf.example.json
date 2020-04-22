@@ -1,0 +1,7 @@
+{   
+	"host" : "127.0.0.1:3306",
+    "user" : "root",
+    "password" : "mypass",
+    "dbname" : "larutaproducciones.com.ar",
+    "table": "radio_pages"
+}
