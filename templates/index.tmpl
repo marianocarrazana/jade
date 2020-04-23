@@ -118,12 +118,12 @@ Estamos Online
 <div class='logo-desc section' id='Logo Description' name='Logo Description Widget'><div class='widget HTML' data-version='1' id='HTML3'>
 <div class='widget-content'>
 <div class='type'>
-<span>Solo</span><p></p>
+<span>Solo</span><p id="roll">Buena Música</p>
 </div>
 <script language='javascript' type='text/javascript'>//<![CDATA[
               $(function() {
                 "use strict";
-                $(".header-logo-desc p").typed({
+                $("#roll").typed({
                   strings: ["Buena Música", "Buena Música" , " Buena Música"], //Headlines(Change It)
                   loop: true,
                   startDelay: 1e3,
@@ -155,9 +155,9 @@ Tu navegador no puede reproducir este tipo de contenido.
 <div class='top-bar-social blue section' id='header social widget' name='Top Social Widget'><div class='widget LinkList' data-version='1' id='LinkList230'>
 <div class='widget-content'>
 <ul id='social'>
-{{if .Facebook.Valid}}<li><a class='facebook' href='{{.Facebook}}' title='facebook'></a></li>{{end}}
-{{if .Twitter.Valid}}<li><a class='twitter' href='{{.Witter}}' title='twitter'></a></li>{{end}}
-{{if .Instagram.Valid}}<li><a class='instagram' href='{{.Instagram}}' title='instagram'></a></li>{{end}}
+{{if .Contact.facebook}}<li><a class='facebook' href='{{.Contact.facebook}}' title='facebook'></a></li>{{end}}
+{{if .Contact.twitter}}<li><a class='twitter' href='{{.Contact.twitter}}' title='twitter'></a></li>{{end}}
+{{if .Contact.instagram}}<li><a class='instagram' href='{{.Contact.instagram}}' title='instagram'></a></li>{{end}}
 </ul>
 </div>
 </div></div>
@@ -212,10 +212,10 @@ No hay entradas.
 <div style='clear:both'></div>
 <div class='row' id='sora_blogger_cntct_form'>
 <div class='wrap-me wow fadeInLeft' data-wow-delay='0.2s' style='visibility: visible;'>
-<div class='sora-contact-widget section' id='Contact Widget' name='Contact Form Widget'><div class='widget ContactForm' data-version='1' id='ContactForm1'>
+{{if .Widget.Valid}}<div class='sora-contact-widget section' id='Contact Widget' name='Contact Form Widget'><div class='widget ContactForm' data-version='1' id='ContactForm1'>
 <div class='contact-form-widget'>
 <div class='form'>
-{{if .Widget.Valid}}{{.Widget}}{{end}}
+{{.Widget}}
 </div>
 </div>
 <div class='clear'></div>
@@ -227,7 +227,7 @@ No hay entradas.
 </span>
 </span>
 <div class='clear'></div>
-</div></div>
+</div></div>{{end}}
 <br/>
 </div><div class='map-me wow fadeInRight' data-wow-delay='0s' style='visibility: visible;'>
 <div class='contact-other'>
@@ -235,9 +235,9 @@ No hay entradas.
 <p class='con-text'>
 </p>
 <ul class='con-list'>
-{{if .Address.Valid}}<li><i class='lnr lnr-map'></i>{{.Address}}</li>{{end}}
-{{if .Whatsapp.Valid}}<li><i class='lnr lnr-phone'></i>{{.Whatsapp}}</li>{{end}}
-{{if .Email.Valid}}<li><i class='lnr lnr-envelope'></i>{{.Email}}</li>{{end}}
+{{if .Contact.address}}<li><i class='lnr lnr-map'></i>{{.Contact.address}}</li>{{end}}
+{{if .Contact.whatsapp}}<li><i class='lnr lnr-phone'></i>{{.Contact.whatsapp}}</li>{{end}}
+{{if .Contact.email}}<li><i class='lnr lnr-envelope'></i>{{.Contact.email}}</li>{{end}}
 </ul>
 </div>
 </div>

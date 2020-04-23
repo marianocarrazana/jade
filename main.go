@@ -27,12 +27,7 @@ type RadioPage struct {
     Id    int
     Domain string
     Name  string
-    Facebook sql.NullString
-    Twitter sql.NullString
-    Instagram sql.NullString
-    Address sql.NullString
-    Email sql.NullString
-    Whatsapp sql.NullString
+    Contact map[string]interface{}
     RadioUrl sql.NullString
     Widget sql.NullString
 }
@@ -72,11 +67,11 @@ var configuration = getConfig()
 var db = dbConn()
 
 func Index(w http.ResponseWriter, r *http.Request) {
-    log.Println(r.URL.Path)
+    //log.Println(r.URL.Path)
     var re = regexp.MustCompile(`(?m)^[\w\.]+`)
     var dom =  re.Find([]byte(r.Host))
-    log.Println(dom) 
-    selDB, err := db.Query("SELECT id,domain,name,radio_url,widget,facebook,twitter,instagram,whatsapp,email,address FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
+    //log.Println(dom) 
+    selDB, err := db.Query("SELECT id,domain,name,radio_url,widget,contact FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
     if err != nil {
         panic(err.Error())
     }
@@ -84,20 +79,21 @@ func Index(w http.ResponseWriter, r *http.Request) {
     selDB.Next()
         var id int
         var name, domain string
-        var radio_url,widget,facebook,twitter,instagram,whatsapp,email,address sql.NullString
-        err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &facebook, &twitter, &instagram, &whatsapp, &email, &address)
+        var radio_url,widget,contact sql.NullString
+        err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &contact)
         if err != nil {
             panic(err.Error())
         }
     page.Id = id
     page.Name = name
     page.Domain = domain
-    page.Facebook = facebook
-    page.Twitter = twitter
-    page.Instagram = instagram
-    page.Whatsapp = whatsapp
-    page.Email = email
-    page.Address = address
+    if contact.Valid{
+        json.Unmarshal([]byte(contact.String), &page.Contact)
+    } else{
+        page.Contact = map[string]interface{}{
+            "empty": true,
+        }
+    }
     page.RadioUrl = radio_url
     page.Widget = widget
     tmpl.ExecuteTemplate(w, "index", page)
