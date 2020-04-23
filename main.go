@@ -27,7 +27,12 @@ type RadioPage struct {
     Id    int
     Domain string
     Name  string
-    Contact sql.NullString
+    Facebook sql.NullString
+    Twitter sql.NullString
+    Instagram sql.NullString
+    Address sql.NullString
+    Email sql.NullString
+    Whatsapp sql.NullString
     RadioUrl sql.NullString
     Widget sql.NullString
 }
@@ -51,7 +56,7 @@ func getConfig() (configuration map[string]interface{}){
 }
 
 func dbConn() (db *sql.DB) {
-    fmt.Println(configuration["user"].(string)+":"+configuration["password"].(string)+"@tcp("+configuration["host"].(string)+")/"+configuration["dbname"].(string))
+    //fmt.Println(configuration["user"].(string)+":"+configuration["password"].(string)+"@tcp("+configuration["host"].(string)+")/"+configuration["dbname"].(string))
     db, err := sql.Open("mysql", configuration["user"].(string)+":"+configuration["password"].(string)+"@tcp("+configuration["host"].(string)+")/"+configuration["dbname"].(string))
     if err != nil {
         panic(err.Error())
@@ -71,7 +76,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
     var re = regexp.MustCompile(`(?m)^[\w\.]+`)
     var dom =  re.Find([]byte(r.Host))
     log.Println(dom) 
-    selDB, err := db.Query("SELECT id,domain,name,contact,radio_url,widget FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
+    selDB, err := db.Query("SELECT id,domain,name,radio_url,widget,facebook,twitter,instagram,whatsapp,email,address FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
     if err != nil {
         panic(err.Error())
     }
@@ -79,17 +84,22 @@ func Index(w http.ResponseWriter, r *http.Request) {
     selDB.Next()
         var id int
         var name, domain string
-        var contact,radio_url,widget sql.NullString
-        err = selDB.Scan(&id, &domain, &name, &contact, &radio_url, &widget)
+        var radio_url,widget,facebook,twitter,instagram,whatsapp,email,address sql.NullString
+        err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &facebook, &twitter, &instagram, &whatsapp, &email, &address)
         if err != nil {
             panic(err.Error())
         }
-        page.Id = id
-        page.Name = name
-        page.Domain = domain
-        page.Contact = contact
-        page.RadioUrl = radio_url
-        page.Widget = widget
+    page.Id = id
+    page.Name = name
+    page.Domain = domain
+    page.Facebook = facebook
+    page.Twitter = twitter
+    page.Instagram = instagram
+    page.Whatsapp = whatsapp
+    page.Email = email
+    page.Address = address
+    page.RadioUrl = radio_url
+    page.Widget = widget
     tmpl.ExecuteTemplate(w, "index", page)
 }
 

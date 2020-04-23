@@ -31,7 +31,7 @@
 <meta content='YOUR KEYWORDS HERE' name='keywords'/>
 <!-- Description and Keywords (end) -->
 <meta content='{{.Name}}' property='og:site_name'/>
-<meta content='https://{.Domain}/' name='twitter:domain'/>
+<meta content='https://{{.Domain}}/' name='twitter:domain'/>
 <meta content='' name='twitter:title'/>
 <meta content='summary' name='twitter:card'/>
 <meta content='' name='twitter:title'/>
@@ -133,11 +133,12 @@ Estamos Online
               //]]>
 </script>
 
-
+{{if .RadioUrl.Valid}}
 <audio controls>
 <source src='{{.RadioUrl}}' />
 Tu navegador no puede reproducir este tipo de contenido.
 </source></audio>
+{{end}}
 </div>
 <div class='clear'></div>
 <span class='widget-item-control'>
@@ -155,11 +156,9 @@ Tu navegador no puede reproducir este tipo de contenido.
 <div class='top-bar-social blue section' id='header social widget' name='Top Social Widget'><div class='widget LinkList' data-version='1' id='LinkList230'>
 <div class='widget-content'>
 <ul id='social'>
-<li><a class='facebook' href='http://' title='facebook'></a></li>
-<li><a class='twitter' href='http://' title='twitter'></a></li>
-<li><a class='gplus' href='http://' title='gplus'></a></li>
-<li><a class='instagram' href='http://' title='instagram'></a></li>
-<li><a class='pinterest' href='http://' title='pinterest'></a></li>
+{{if .Facebook.Valid}}<li><a class='facebook' href='{{.Facebook}}' title='facebook'></a></li>{{end}}
+{{if .Twitter.Valid}}<li><a class='twitter' href='{{.Witter}}' title='twitter'></a></li>{{end}}
+{{if .Instagram.Valid}}<li><a class='instagram' href='{{.Instagram}}' title='instagram'></a></li>{{end}}
 </ul>
 </div>
 </div></div>
@@ -190,7 +189,7 @@ No hay entradas.
 </div>
 </div>
 <div class='blog-pager' id='blog-pager'>
-<a class='home-link' href='https://{.Domain}/'>Página Principal</a>
+<a class='home-link' href='https://{{.Domain}}/'>Página Principal</a>
 </div>
 <div class='clear'></div>
 <div class='blog-feeds'>
@@ -217,31 +216,7 @@ No hay entradas.
 <div class='sora-contact-widget section' id='Contact Widget' name='Contact Form Widget'><div class='widget ContactForm' data-version='1' id='ContactForm1'>
 <div class='contact-form-widget'>
 <div class='form'>
-<form name='contact-form'>
-<p></p>
-<span class='name-bg'>Name*</span>
-<br/>
-<input class='contact-form-name' id='ContactForm1_contact-form-name' name='name' size='30' type='text' value=''/>
-<p></p>
-<span class='email-bg'>Email*</span>
-<br/>
-<input class='contact-form-email' id='ContactForm1_contact-form-email' name='email' size='30' type='text' value=''/>
-<p></p>
-<span class='message-bg'>Message*</span>
-<br/>
-<textarea class='contact-form-email-message' cols='25' id='ContactForm1_contact-form-email-message' name='email-message' rows='5'></textarea>
-<p></p>
-<span class='send-bg'>
-<input class='contact-form-button contact-form-button-submit' id='ContactForm1_contact-form-submit' type='button' value='Enviar'/></span>
-<span class='clear-bg'><input class='contact-form-button contact-form-button-submit clear-button' type='reset' value='Clear'/></span>
-<p></p>
-<div style='max-width: 100%; text-align: center; width: 100%;'>
-<div class='contact-form-error-message' id='ContactForm1_contact-form-error-message'>
-</div>
-<div class='contact-form-success-message' id='ContactForm1_contact-form-success-message'>
-</div>
-</div>
-</form>
+{{if .Widget.Valid}}{{.Widget}}{{end}}
 </div>
 </div>
 <div class='clear'></div>
@@ -261,9 +236,9 @@ No hay entradas.
 <p class='con-text'>
 </p>
 <ul class='con-list'>
-<li><i class='lnr lnr-map'></i>SAN PEDRO MISIONES ARGENTINA.</li>
-<li><i class='lnr lnr-phone'></i>+54-3751-345882 </li>
-<li><i class='lnr lnr-envelope'></i>fmarieslavozdelpueblo@gmail.com</li>
+{{if .Address.Valid}}<li><i class='lnr lnr-map'></i>{{.Address}}</li>{{end}}
+{{if .Whatsapp.Valid}}<li><i class='lnr lnr-phone'></i>{{.Whatsapp}}</li>{{end}}
+{{if .Email.Valid}}<li><i class='lnr lnr-envelope'></i>{{.Email}}</li>{{end}}
 </ul>
 </div>
 </div>
@@ -282,17 +257,6 @@ No hay entradas.
 <div class='footer_copyright'>
                        Creado Por <a href='https://larutaproducciones.com.ar/' rel='dofollow' title='La Ruta Producciones'>La Ruta Producciones</a> | Seguinos en <a href='https://www.facebook.com/LA-RUTA-PRODUCCIONES-134538913245286/' rel='dofollow' style='color:#ffbd2f;' target='_blank'>Facebook</a>
 </div>
-<div class='bottom-bar-social blue section' id='Footer social widget' name='Footer Social Widget'><div class='widget LinkList' data-version='1' id='LinkList236'>
-<div class='widget-content'>
-<ul id='social'>
-<li><a class='facebook' href='#' title='facebook'></a></li>
-<li><a class='twitter' href='#' title='twitter'></a></li>
-<li><a class='gplus' href='#' title='gplus'></a></li>
-<li><a class='bloglovin' href='#' title='bloglovin'></a></li>
-<li><a class='instagram' href='#' title='instagram'></a></li>
-</ul>
-</div>
-</div></div>
 </div>
 </div>
 </div>
