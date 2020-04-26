@@ -27,7 +27,7 @@
 {{.Name}}
 </title>
 <!-- Description and Keywords (start) -->
-<meta content='YOUR DESCRIPTION HERE' name='description'/>
+<meta content='{{.Name}}' name='description'/>
 <meta content='YOUR KEYWORDS HERE' name='keywords'/>
 <!-- Description and Keywords (end) -->
 <meta content='{{.Name}}' property='og:site_name'/>
@@ -60,18 +60,14 @@ var pagenav_next = "Next";
 
 </head>
 <body class='index'>
-<!--preloader start-->
-<div id='preloader'>
-<div id='loader'></div>
-</div>
-<!--preloader end-->
+
 <div id="outer-wrapper" class="index home">
 <div class='scroll-header' id='head-trigger'>
 <div class='scroll-head-wrap row'>
 <div class='scrollin-logo'>
 <div class='header section' id='header' name='Logo and Title'><div class='widget Header' data-version='1' id='Header1'>
 <div id='header-inner'>
-<a href='https://{.Domain}/' style='display: block'><h1 style='display:none'>{{.Name}}</h1>
+<a href='https://{{.Domain}}/' style='display: block'><h1 style='display:none'>{{.Name}}</h1>
 <img alt="{{.Name}}" height="231px; " id="Header1_headerimg" src="//larutaproducciones.com.ar/usuarios/public/images/radio_logos/{{.Id}}.png" style="display: block" width="306px; ">
 </a>
 </div>
@@ -123,7 +119,7 @@ Estamos Online
 <script language='javascript' type='text/javascript'>//<![CDATA[
               $(function() {
                 "use strict";
-                $("#roll").typed({
+                document.querySelector("#roll").typed({
                   strings: ["Buena Música", "Buena Música" , " Buena Música"], //Headlines(Change It)
                   loop: true,
                   startDelay: 1e3,
@@ -212,7 +208,8 @@ No hay entradas.
 <div style='clear:both'></div>
 <div class='row' id='sora_blogger_cntct_form'>
 <div class='wrap-me wow fadeInLeft' data-wow-delay='0.2s' style='visibility: visible;'>
-{{if .Widget.Valid}}<div class='sora-contact-widget section' id='Contact Widget' name='Contact Form Widget'><div class='widget ContactForm' data-version='1' id='ContactForm1'>
+{{if .Widget.Valid}}
+<div class='sora-contact-widget section' id='Contact Widget' name='Contact Form Widget'><div class='widget ContactForm' data-version='1' id='ContactForm1'>
 <div class='contact-form-widget'>
 <div class='form'>
 {{.Widget}}
@@ -227,7 +224,8 @@ No hay entradas.
 </span>
 </span>
 <div class='clear'></div>
-</div></div>{{end}}
+</div></div>
+{{end}}
 <br/>
 </div><div class='map-me wow fadeInRight' data-wow-delay='0s' style='visibility: visible;'>
 <div class='contact-other'>
@@ -278,7 +276,7 @@ article {
 <script type="text/javascript" src="https://www.blogger.com/static/v1/widgets/3638369130-widgets.js"></script>
 <script type='text/javascript'>
 window['__wavt'] = 'AOuZoY5Hzn7ZQf-FC3jLIErfILwGJFwMxg:1586793213660';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d4237111631805014358','//fmlapopular.blogspot.com/','4237111631805014358');
-_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '4237111631805014358', 'title': '{{.Name}}', 'url': 'https://{.Domain}/', 'canonicalUrl': 'https://{.Domain}/', 'homepageUrl': 'https://{.Domain}/', 'searchUrl': 'https://{.Domain}/search', 'canonicalHomepageUrl': 'https://{.Domain}/', 'blogspotFaviconUrl': 'https://{.Domain}/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'es-419', 'localeUnderscoreDelimited': 'es_419', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22{{.Name}} - Atom\x22 href\x3d\x22https://{.Domain}/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22{{.Name}} - RSS\x22 href\x3d\x22https://{.Domain}/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22{{.Name}} - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/4237111631805014358/posts/default\x22 /\x3e\n', 'meTag': '\x3clink rel\x3d\x22me\x22 href\x3d\x22https://www.blogger.com/profile/14835417260452022912\x22 /\x3e\n', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'ieCssRetrofitLinks': '\x3c!--[if IE]\x3e\x3cscript type\x3d\x22text/javascript\x22 src\x3d\x22https://www.blogger.com/static/v1/jsbin/3095134620-ieretrofit.js\x22\x3e\x3c/script\x3e\n\x3c![endif]--\x3e', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/2fc88244100a0440', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Obtener vínculo', 'key': 'link', 'shareMessage': 'Obtener vínculo', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Compartir en Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Compartir en Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Compartir en Pinterest', 'target': 'pinterest'}, {'name': 'Correo electrónico', 'key': 'email', 'shareMessage': 'Correo electrónico', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27es_419\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Leer más', 'pageType': 'index', 'pageName': '', 'pageTitle': '{{.Name}}'}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Editar', 'linkCopiedToClipboard': 'Vínculo copiado al portapapeles', 'ok': 'Aceptar', 'postLink': 'Publicar vínculo'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Personalizado', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': '{{.Name}}', 'description': '', 'url': 'https://{.Domain}/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}]);
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '4237111631805014358', 'title': '{{.Name}}', 'url': 'https://{{.Domain}}/', 'canonicalUrl': 'https://{{.Domain}}/', 'homepageUrl': 'https://{{.Domain}}/', 'searchUrl': 'https://{{.Domain}}/search', 'canonicalHomepageUrl': 'https://{{.Domain}}/', 'blogspotFaviconUrl': 'https://{{.Domain}}/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'es-419', 'localeUnderscoreDelimited': 'es_419', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22{{.Name}} - Atom\x22 href\x3d\x22https://{{.Domain}}/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22{{.Name}} - RSS\x22 href\x3d\x22https://{{.Domain}}/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22{{.Name}} - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/4237111631805014358/posts/default\x22 /\x3e\n', 'meTag': '\x3clink rel\x3d\x22me\x22 href\x3d\x22https://www.blogger.com/profile/14835417260452022912\x22 /\x3e\n', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'ieCssRetrofitLinks': '\x3c!--[if IE]\x3e\x3cscript type\x3d\x22text/javascript\x22 src\x3d\x22https://www.blogger.com/static/v1/jsbin/3095134620-ieretrofit.js\x22\x3e\x3c/script\x3e\n\x3c![endif]--\x3e', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/2fc88244100a0440', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Obtener vínculo', 'key': 'link', 'shareMessage': 'Obtener vínculo', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Compartir en Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Compartir en Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Compartir en Pinterest', 'target': 'pinterest'}, {'name': 'Correo electrónico', 'key': 'email', 'shareMessage': 'Correo electrónico', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27es_419\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Leer más', 'pageType': 'index', 'pageName': '', 'pageTitle': '{{.Name}}'}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Editar', 'linkCopiedToClipboard': 'Vínculo copiado al portapapeles', 'ok': 'Aceptar', 'postLink': 'Publicar vínculo'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Personalizado', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': '{{.Name}}', 'description': '', 'url': 'https://{{.Domain}}/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}]);
 _WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', document.getElementById('Header1'), {}, 'displayModeFull'));
 _WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML30', 'Header Title', document.getElementById('HTML30'), {}, 'displayModeFull'));
 _WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML3', 'Logo Description', document.getElementById('HTML3'), {}, 'displayModeFull'));

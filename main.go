@@ -58,7 +58,7 @@ func dbConn() (db *sql.DB) {
     }
     db.SetMaxOpenConns(25)
     db.SetMaxIdleConns(25)
-    db.SetConnMaxLifetime(1*time.Minute)
+    db.SetConnMaxLifetime(20*time.Second)
     return db
 }
 
@@ -76,27 +76,31 @@ func Index(w http.ResponseWriter, r *http.Request) {
         panic(err.Error())
     }
     page := RadioPage{}
-    selDB.Next()
+    if selDB.Next() {
         var id int
         var name, domain string
         var radio_url,widget,contact sql.NullString
         err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &contact)
         if err != nil {
-            panic(err.Error())
+                panic(err.Error())
         }
-    page.Id = id
-    page.Name = name
-    page.Domain = domain
-    if contact.Valid{
-        json.Unmarshal([]byte(contact.String), &page.Contact)
-    } else{
-        page.Contact = map[string]interface{}{
-            "empty": true,
+        page.Id = id
+        page.Name = name
+        page.Domain = domain
+        if contact.Valid{
+            json.Unmarshal([]byte(contact.String), &page.Contact)
+        } else{
+            page.Contact = map[string]interface{}{
+                "empty": true,
+            }
         }
+        page.RadioUrl = radio_url
+        page.Widget = widget
+        tmpl.ExecuteTemplate(w, "index", page)
+    } else {
+        http.Redirect(w, r, "https://larutaproducciones.com.ar", 302)
     }
-    page.RadioUrl = radio_url
-    page.Widget = widget
-    tmpl.ExecuteTemplate(w, "index", page)
+    defer selDB.Close()
 }
 
 func main() {

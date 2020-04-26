@@ -1,5 +1,5 @@
 #Header1_headerimg{
-	max-height: 128px;
+	max-height: 100px;
 	width:auto;
 }
 
@@ -194,11 +194,11 @@ opacity:0;
 /* ######## Scrolling Navigation Menu Css ######################### */
 .scroll-header {
 z-index: 9;
-position: absolute;
+position: fixed;
 top: 0;
 left: 0;
 width: 100%;
-padding: 10px 0px;
+padding: 8px 0px;
 transition: all .5s;
 }
 .item .scroll-header, .static_page .scroll-header, .error_page .scroll-header {
@@ -209,8 +209,7 @@ box-shadow: 0 0 6px 1px rgba(0,0,0,0.1);
 padding: 20px 0;
 }
 .scroll-header.scrolled-header {
-background-color: rgba(30, 30, 30, 0.85);
-border-bottom: 1px solid #262626;
+background-color: rgba(50, 50, 50, 0.33);
 position: fixed;
 top: 0;
 left: 0;
