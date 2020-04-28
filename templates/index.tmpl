@@ -227,28 +227,17 @@ Estamos Online
   }).mount();
   </script>
 {{end}}
-<div class='insta-wrap' id='section-7'>
-<div style='clear:both'></div>
-<div class='row' id='sora_blogger_cntct_form'>
-{{if .Widget.Valid}}
-<div class='wrap-me wow fadeInLeft' data-wow-delay='0.2s' style='visibility: visible;'>
+<div class='flex-row flex-wrap' id="widget">
 
-<div class='sora-contact-widget section' id='Contact Widget' name='Contact Form Widget'><div class='widget ContactForm' data-version='1' id='ContactForm1'>
-<div class='contact-form-widget'>
-<div class='form'>
-{{.Widget.String}}
-</div>
-</div>
-<div class='clear'></div>
-</div></div>
-</div>
-{{end}}
-<div class='map-me wow fadeInRight' data-wow-delay='0s' style='visibility: visible;'>
-<div class='contact-other'>
+  {{if .Widget.Valid}}
+    <div class='flex-column flex-grow'>
+     {{.Widget.String}}
+    </div>
+  {{end}}
+
   {{if or .Contact.address .Contact.phone .Contact.whatsapp .Contact.email}}
+  <div class='contact-other flex-column flex-grow'>
     <h1 class='con-title' id="contacto">Contactanos</h1>
-    <p class='con-text'>
-    </p>
     <ul class='con-list'>
     {{if .Contact.address}}<li><i class='lnr lnr-map'></i>{{.Contact.address}}</li>{{end}}
     {{if .Contact.phone}}<li><i class='lnr lnr-phone'></i>{{.Contact.phone}}</li>{{end}}
@@ -257,22 +246,12 @@ Estamos Online
     </ul>
     </div>
   {{end}}
-</div>
-</div>
+
 </div>
 <div style='clear: both;'></div>
-<div class='bot-bar-menu'>
-<div class='bot-menu-wrap row'>
-<div class='bot-menu section' id='Bottom-menu'><div class='widget PageList' data-version='1' id='PageList1'>
-<h2>Pages</h2>
-<div class='widget-content'>
-<ul id='nav2'>
-</ul>
-</div>
-</div></div>
-<div class='footer_copyright'>
+<footer>
                        Creado Por <a href='https://larutaproducciones.com.ar/' rel='dofollow' title='La Ruta Producciones'>La Ruta Producciones</a> | Seguinos en <a href='https://www.facebook.com/LA-RUTA-PRODUCCIONES-134538913245286/' rel='dofollow' style='color:#ffbd2f;' target='_blank'>Facebook</a>
-</div>
+</footer>
 </div>
 </div>
 </div>

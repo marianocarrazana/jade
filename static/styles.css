@@ -2,6 +2,32 @@
 	max-height: 100px;
 	width:auto;
 }
+.flex-row,.flex-column{
+  display:flex
+}
+.flex-column{
+  flex-direction:column;
+}
+.flex-wrap{
+  flex-wrap:wrap;
+}
+.flex-center{
+  justify-content:center;
+}
+.flex-grow{
+  flex-grow:1;
+  margin:10px;
+  text-align:center;
+}
+#widget{
+  max-width:1280px;
+  margin:10px auto;
+}
+footer{
+	background: black;
+    display: block;
+    text-align: center;
+}
 
 /*
 -----------------------------------------------
