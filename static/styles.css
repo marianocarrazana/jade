@@ -27,6 +27,12 @@ footer{
 	background: black;
     display: block;
     text-align: center;
+    color: white;
+    font-size: 120%;
+    padding: 20px;
+}
+footer a{
+	color:red;
 }
 
 /*
