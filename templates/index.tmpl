@@ -1,6 +1,4 @@
-{{ define "index" }}
-
-<!DOCTYPE html>
+{{ define "index" }}<!DOCTYPE html>
 <html class='v2' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
 <link href='https://www.blogger.com/static/v1/widgets/3597120983-css_bundle_v2.css' rel='stylesheet' type='text/css'/>
@@ -11,7 +9,7 @@
 <link href='//cdn.linearicons.com/free/1.0.0/icon-font.min.css' rel='stylesheet'/>
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 <meta content='blogger' name='generator'/>
-<link href='https://{{.Domain}}/favicon.ico' rel='icon' type='image/x-icon'/>
+<link href='https://{{.Domain}}/static/favicon.ico' rel='icon' type='image/x-icon'/>
 <link href='https://{{.Domain}}/' rel='canonical'/>
 <link rel="alternate" type="application/atom+xml" title="{{.Name}} - Atom" href="https://{{.Domain}}/feeds/posts/default" />
 <link rel="alternate" type="application/rss+xml" title="{{.Name}} - RSS" href="https://{{.Domain}}/feeds/posts/default?alt=rss" />
@@ -27,8 +25,8 @@
 {{.Name}}
 </title>
 <!-- Description and Keywords (start) -->
-<meta content='{{.Name}}' name='description'/>
-<meta content='YOUR KEYWORDS HERE' name='keywords'/>
+<meta content='Radio Online {{.Name}}' name='description'/>
+<meta content='{{.Name}}' name='keywords'/>
 <!-- Description and Keywords (end) -->
 <meta content='{{.Name}}' property='og:site_name'/>
 <meta content='https://{{.Domain}}/' name='twitter:domain'/>
@@ -40,12 +38,20 @@
 <meta content='Facebook Admin ID here' property='fb:admins'/>
 <meta content='@username' name='twitter:site'/>
 <meta content='@username' name='twitter:creator'/>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide">
+</script>
+<!-- Required Core Stylesheet -->
+<link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
+
+<!-- Optional Theme Stylesheet -->
+<link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css">
 <style type="text/css" media="screen">
 	#header-wrapper {
 	background: url(//larutaproducciones.com.ar/usuarios/public/images/radio_backgrounds/{{.Id}}.jpg) no-repeat center bottom;
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="static/styles.css">
+<link rel="stylesheet" type="text/css" href="static/player.css">
 <script type='text/javascript'> 
 //<![CDATA[
 var no_image = "http://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/s1600-r/nth.png";
@@ -56,7 +62,6 @@ var pagenav_prev = "Previous";
 var pagenav_next = "Next";
 //]]>
 </script>
-<link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=4237111631805014358&amp;zx=fe833be0-4688-47a6-ae2c-828101573037' media='none' onload='if(media!=&#39;all&#39;)media=&#39;all&#39;' rel='stylesheet'/><noscript><link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=4237111631805014358&amp;zx=fe833be0-4688-47a6-ae2c-828101573037' rel='stylesheet'/></noscript>
 
 </head>
 <body class='index'>
@@ -76,7 +81,7 @@ var pagenav_next = "Next";
 <div class='scrolling-menu'>
 <ul id='nav'>
 <li class='current'><a href='#header-wrapper'>Inicio</a></li>
-<li><a href='#section-7'>Contactanos</a></li>
+<li><a href='#contacto'>Contactanos</a></li>
 </ul><div class='menu-mobile2'></div>
 </div>
 <div class='tm-menu'>
@@ -116,23 +121,37 @@ Estamos Online
 <div class='type'>
 <span>Solo</span><p id="roll">Buena Música</p>
 </div>
-<script language='javascript' type='text/javascript'>//<![CDATA[
-              $(function() {
-                "use strict";
-                document.querySelector("#roll").typed({
+<script>
+  document.querySelector("#roll").typed({
                   strings: ["Buena Música", "Buena Música" , " Buena Música"], //Headlines(Change It)
                   loop: true,
                   startDelay: 1e3,
                   backDelay: 2e3
                 });
-              });
-              //]]>
 </script>
 {{if .RadioUrl.Valid}}
-<audio controls>
-<source src='{{.RadioUrl}}' />
-Tu navegador no puede reproducir este tipo de contenido.
-</source></audio>
+<div id="music_player">
+  <img id="play_button" onclick="play()" src="https://fonts.gstatic.com/s/i/materialicons/play_arrow/v4/24px.svg"/>
+  <img src="https://fonts.gstatic.com/s/i/materialicons/pause/v4/24px.svg" style="display:none!important"/>
+  <div id="slider">
+    <b>&#128264;</b><input class="slider" step="0.05" type="range" min="0" max="1" value="0.9" onchange="setVolume(this.value)">
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" id="peak-meter" viewBox="0 0 128 128">
+  <g>
+    <title>Audio Bars</title>
+    <rect class="bar" transform="translate(0,0)" y="15"></rect>
+    <rect class="bar" transform="translate(25,0)" y="15"></rect>
+    <rect class="bar" transform="translate(50,0)" y="15"></rect>
+    <rect class="bar" transform="translate(75,0)" y="15"></rect>
+    <rect class="bar" transform="translate(100,0)" y="15"></rect>
+  </g>
+</svg>
+  <audio id="audio_player">
+    <source src="{{.RadioUrl.String}}">
+    Tu navegador no puede reproducir este tipo de contenido.
+  </audio>
+</div>
+
 {{end}}
 </div>
 <div class='clear'></div>
@@ -165,79 +184,79 @@ Tu navegador no puede reproducir este tipo de contenido.
 </div>
 </div>
 <div style='clear: both;'></div>
-<div class='row' id='content-wrapper'>
-<div id='main-wrapper'>
-<div class='main section' id='main'><div class='widget Blog' data-version='1' id='Blog1'>
-<div class='blog-posts hfeed'>
-<div class='status-msg-wrap'>
-<div class='status-msg-body'>
-No hay entradas.
-</div>
-<div class='status-msg-border'>
-<div class='status-msg-bg'>
-<div class='status-msg-hidden'>No hay entradas.</div>
-</div>
-</div>
-</div>
-<div style='clear: both;'></div>
-<div class='post-grid wow fadeInUp' style='visibility: visible;'>
-</div>
-</div>
-<div class='blog-pager' id='blog-pager'>
-<a class='home-link' href='https://{{.Domain}}/'>Página Principal</a>
-</div>
-<div class='clear'></div>
-<div class='blog-feeds'>
-</div>
-</div></div>
-</div>
-<div id='sidebar-wrapper'>
-<div class='sidebar no-items section' id='sidebar'></div>
-</div>
-<div style='clear: both;'></div>
-</div>
+
 <!-- end content-wrapper -->
+{{if .Sponsors.Valid}}
+  <div id="sponsors">
+      <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          {{range .Sponsors.List}}
+          <li class="glide__slide">
+            <img src="{{.}}">
+          </li>
+          {{end}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <style type="text/css">
+    .glide img{
+      height:120px;
+    }
+    .glide__slide{
+      background:rgba(200,200,200,.3);
+      padding:4px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .glide__slides>.glide__slide:nth-child(even){
+      background: rgba(55,55,55,.66);
+    }
+    .glide{
+      max-width:650px;
+      margin:90px auto 60px;
+      overflow: hidden;
+    }
+  </style>
+  <script>
+  new Glide('.glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 3
+  }).mount();
+  </script>
+{{end}}
 <div class='insta-wrap' id='section-7'>
-<div class='contact-title'>
-<h4></h4>
-<span></span>
-</div>
-<div style='clear:both'></div>
-<div class='contact_list_wrapper'>
-</div>
 <div style='clear:both'></div>
 <div class='row' id='sora_blogger_cntct_form'>
-<div class='wrap-me wow fadeInLeft' data-wow-delay='0.2s' style='visibility: visible;'>
 {{if .Widget.Valid}}
+<div class='wrap-me wow fadeInLeft' data-wow-delay='0.2s' style='visibility: visible;'>
+
 <div class='sora-contact-widget section' id='Contact Widget' name='Contact Form Widget'><div class='widget ContactForm' data-version='1' id='ContactForm1'>
 <div class='contact-form-widget'>
 <div class='form'>
-{{.Widget}}
+{{.Widget.String}}
 </div>
 </div>
-<div class='clear'></div>
-<span class='widget-item-control'>
-<span class='item-control blog-admin'>
-<a class='quickedit' href='//www.blogger.com/rearrange?blogID=4237111631805014358&widgetType=ContactForm&widgetId=ContactForm1&action=editWidget&sectionId=Contact+Widget' onclick='return _WidgetManager._PopupConfig(document.getElementById("ContactForm1"));' rel='nofollow' target='configContactForm1' title='Editar'>
-<img alt='' height='18' src='https://resources.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
-</a>
-</span>
-</span>
 <div class='clear'></div>
 </div></div>
-{{end}}
-<br/>
-</div><div class='map-me wow fadeInRight' data-wow-delay='0s' style='visibility: visible;'>
-<div class='contact-other'>
-<h1 class='con-title'>Contactanos</h1>
-<p class='con-text'>
-</p>
-<ul class='con-list'>
-{{if .Contact.address}}<li><i class='lnr lnr-map'></i>{{.Contact.address}}</li>{{end}}
-{{if .Contact.whatsapp}}<li><i class='lnr lnr-phone'></i>{{.Contact.whatsapp}}</li>{{end}}
-{{if .Contact.email}}<li><i class='lnr lnr-envelope'></i>{{.Contact.email}}</li>{{end}}
-</ul>
 </div>
+{{end}}
+<div class='map-me wow fadeInRight' data-wow-delay='0s' style='visibility: visible;'>
+<div class='contact-other'>
+  {{if or .Contact.address .Contact.phone .Contact.whatsapp .Contact.email}}
+    <h1 class='con-title' id="contacto">Contactanos</h1>
+    <p class='con-text'>
+    </p>
+    <ul class='con-list'>
+    {{if .Contact.address}}<li><i class='lnr lnr-map'></i>{{.Contact.address}}</li>{{end}}
+    {{if .Contact.phone}}<li><i class='lnr lnr-phone'></i>{{.Contact.phone}}</li>{{end}}
+    {{if .Contact.whatsapp}}<li><i class='lnr lnr-phone'></i>{{.Contact.whatsapp}}</li>{{end}}
+    {{if .Contact.email}}<li><i class='lnr lnr-envelope'></i>{{.Contact.email}}</li>{{end}}
+    </ul>
+    </div>
+  {{end}}
 </div>
 </div>
 </div>
@@ -273,19 +292,6 @@ article {
   }
 </style>
 
-<script type="text/javascript" src="https://www.blogger.com/static/v1/widgets/3638369130-widgets.js"></script>
-<script type='text/javascript'>
-window['__wavt'] = 'AOuZoY5Hzn7ZQf-FC3jLIErfILwGJFwMxg:1586793213660';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d4237111631805014358','//fmlapopular.blogspot.com/','4237111631805014358');
-_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '4237111631805014358', 'title': '{{.Name}}', 'url': 'https://{{.Domain}}/', 'canonicalUrl': 'https://{{.Domain}}/', 'homepageUrl': 'https://{{.Domain}}/', 'searchUrl': 'https://{{.Domain}}/search', 'canonicalHomepageUrl': 'https://{{.Domain}}/', 'blogspotFaviconUrl': 'https://{{.Domain}}/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'es-419', 'localeUnderscoreDelimited': 'es_419', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22{{.Name}} - Atom\x22 href\x3d\x22https://{{.Domain}}/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22{{.Name}} - RSS\x22 href\x3d\x22https://{{.Domain}}/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22{{.Name}} - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/4237111631805014358/posts/default\x22 /\x3e\n', 'meTag': '\x3clink rel\x3d\x22me\x22 href\x3d\x22https://www.blogger.com/profile/14835417260452022912\x22 /\x3e\n', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'ieCssRetrofitLinks': '\x3c!--[if IE]\x3e\x3cscript type\x3d\x22text/javascript\x22 src\x3d\x22https://www.blogger.com/static/v1/jsbin/3095134620-ieretrofit.js\x22\x3e\x3c/script\x3e\n\x3c![endif]--\x3e', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/2fc88244100a0440', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Obtener vínculo', 'key': 'link', 'shareMessage': 'Obtener vínculo', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Compartir en Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Compartir en Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Compartir en Pinterest', 'target': 'pinterest'}, {'name': 'Correo electrónico', 'key': 'email', 'shareMessage': 'Correo electrónico', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27es_419\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Leer más', 'pageType': 'index', 'pageName': '', 'pageTitle': '{{.Name}}'}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Editar', 'linkCopiedToClipboard': 'Vínculo copiado al portapapeles', 'ok': 'Aceptar', 'postLink': 'Publicar vínculo'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Personalizado', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': '{{.Name}}', 'description': '', 'url': 'https://{{.Domain}}/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}]);
-_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', document.getElementById('Header1'), {}, 'displayModeFull'));
-_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML30', 'Header Title', document.getElementById('HTML30'), {}, 'displayModeFull'));
-_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML3', 'Logo Description', document.getElementById('HTML3'), {}, 'displayModeFull'));
-_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList230', 'header social widget', document.getElementById('LinkList230'), {}, 'displayModeFull'));
-_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'navMessage': 'No hay entradas.', 'lightboxEnabled': true, 'lightboxModuleUrl': 'https://www.blogger.com/static/v1/jsbin/3413015838-lbx__es_419.js', 'lightboxCssUrl': 'https://www.blogger.com/static/v1/v-css/368954415-lightbox_bundle.css'}, 'displayModeFull'));
-_WidgetManager._RegisterWidget('_ContactFormView', new _WidgetInfo('ContactForm1', 'Contact Widget', document.getElementById('ContactForm1'), {'contactFormMessageSendingMsg': 'Enviando...', 'contactFormMessageSentMsg': 'Se envió el mensaje.', 'contactFormMessageNotSentMsg': 'No se pudo enviar el mensaje. Vuelve a intentarlo más tarde.', 'contactFormInvalidEmailMsg': 'Debes ingresar una dirección de correo electrónico válida.', 'contactFormEmptyMessageMsg': 'El campo del mensaje no puede estar vacío.', 'title': 'Formulario de contacto', 'blogId': '4237111631805014358', 'contactFormNameMsg': 'Nombre', 'contactFormEmailMsg': 'Correo electrónico', 'contactFormMessageMsg': 'Mensaje', 'contactFormSendMsg': 'Enviar', 'submitUrl': 'https://www.blogger.com/contact-form.do'}, 'displayModeFull'));
-_WidgetManager._RegisterWidget('_PageListView', new _WidgetInfo('PageList1', 'Bottom-menu', document.getElementById('PageList1'), {'title': 'Pages', 'links': [], 'mobile': false}, 'displayModeFull'));
-_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList236', 'Footer social widget', document.getElementById('LinkList236'), {}, 'displayModeFull'));
-</script>
 </body>
 </html>
 

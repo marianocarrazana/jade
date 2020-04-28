@@ -12,6 +12,7 @@ import (
     "io/ioutil"
     "os"
     _ "github.com/go-sql-driver/mysql"
+    "strings"
 )
 
 
@@ -30,6 +31,7 @@ type RadioPage struct {
     Contact map[string]interface{}
     RadioUrl sql.NullString
     Widget sql.NullString
+    Sponsors Sponsors
 }
 
 func getConfig() (configuration map[string]interface{}){
@@ -66,12 +68,17 @@ var tmpl = template.Must(template.ParseGlob("templates/*"))
 var configuration = getConfig()
 var db = dbConn()
 
+type Sponsors struct {
+    Valid bool
+    List  []string
+}
+
 func Index(w http.ResponseWriter, r *http.Request) {
     //log.Println(r.URL.Path)
     var re = regexp.MustCompile(`(?m)^[\w\.]+`)
     var dom =  re.Find([]byte(r.Host))
     //log.Println(dom) 
-    selDB, err := db.Query("SELECT id,domain,name,radio_url,widget,contact FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
+    selDB, err := db.Query("SELECT id,domain,name,radio_url,widget,contact,sponsors FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
     if err != nil {
         panic(err.Error())
     }
@@ -79,14 +86,27 @@ func Index(w http.ResponseWriter, r *http.Request) {
     if selDB.Next() {
         var id int
         var name, domain string
-        var radio_url,widget,contact sql.NullString
-        err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &contact)
+        var radio_url,widget,contact,sponsors sql.NullString
+        err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &contact, &sponsors)
         if err != nil {
                 panic(err.Error())
         }
         page.Id = id
         page.Name = name
         page.Domain = domain
+        if sponsors.Valid{
+            page.Sponsors = Sponsors{
+                Valid: sponsors.Valid,
+                List: strings.Split(sponsors.String, "\n"),
+            }
+        }else{
+            page.Sponsors = Sponsors{
+                Valid: sponsors.Valid,
+                List: []string{""},
+            }
+        }
+            
+
         if contact.Valid{
             json.Unmarshal([]byte(contact.String), &page.Contact)
         } else{
