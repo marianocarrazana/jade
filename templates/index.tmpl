@@ -119,16 +119,12 @@ Estamos Online
 <div class='logo-desc section' id='Logo Description' name='Logo Description Widget'><div class='widget HTML' data-version='1' id='HTML3'>
 <div class='widget-content'>
 <div class='type'>
-<span>Solo</span><p id="roll">Buena Música</p>
+<span>Solo</span><span
+     class="txt-rotate" id="roll"
+     data-period="3000"
+     data-rotate='[ " Buena Música", " Lo Que Te Gusta" ]'></span>
 </div>
-<script>
-  document.querySelector("#roll").typed({
-                  strings: ["Buena Música", "Buena Música" , " Buena Música"], //Headlines(Change It)
-                  loop: true,
-                  startDelay: 1e3,
-                  backDelay: 2e3
-                });
-</script>
+
 {{if .RadioUrl.Valid}}
 <div id="music_player">
   <img id="play_button" onclick="play()" src="https://fonts.gstatic.com/s/i/materialicons/play_arrow/v4/24px.svg"/>
@@ -137,15 +133,15 @@ Estamos Online
     <b>&#128264;</b><input class="slider" step="0.05" type="range" min="0" max="1" value="0.9" onchange="setVolume(this.value)">
   </div>
   <svg xmlns="http://www.w3.org/2000/svg" id="peak-meter" viewBox="0 0 128 128">
-  <g>
-    <title>Audio Bars</title>
-    <rect class="bar" transform="translate(0,0)" y="15"></rect>
-    <rect class="bar" transform="translate(25,0)" y="15"></rect>
-    <rect class="bar" transform="translate(50,0)" y="15"></rect>
-    <rect class="bar" transform="translate(75,0)" y="15"></rect>
-    <rect class="bar" transform="translate(100,0)" y="15"></rect>
-  </g>
-</svg>
+    <g>
+      <title>Audio Bars</title>
+      <rect class="bar" transform="translate(0,0)" y="15"></rect>
+      <rect class="bar" transform="translate(25,0)" y="15"></rect>
+      <rect class="bar" transform="translate(50,0)" y="15"></rect>
+      <rect class="bar" transform="translate(75,0)" y="15"></rect>
+      <rect class="bar" transform="translate(100,0)" y="15"></rect>
+    </g>
+  </svg>
   <audio id="audio_player">
     <source src="{{.RadioUrl.String}}">
     Tu navegador no puede reproducir este tipo de contenido.
@@ -202,15 +198,16 @@ Estamos Online
   </div>
   <style type="text/css">
     .glide img{
-      height:120px;
-    }
-    .glide__slide{
+      height:128px;
+      padding:2px 10px;
       background:rgba(200,200,200,.3);
-      padding:4px;
-      text-align: center;
       border-radius: 8px;
     }
-    .glide__slides>.glide__slide:nth-child(even){
+    .glide__slide{
+      padding:4px;
+      text-align: center;
+    }
+    .glide__slides>.glide__slide:nth-child(even) img{
       background: rgba(55,55,55,.66);
     }
     .glide{
