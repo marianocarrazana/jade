@@ -34,6 +34,35 @@ footer{
 footer a{
 	color:red;
 }
+.contact-list {
+list-style: none;
+padding: 0;
+margin: 0;
+text-align: left;
+padding: 0;
+padding-left: 15px;
+padding-right: 15px;
+display: inline-block;
+line-height: 25px;
+color: #606060;
+}
+.contact-list li i {
+display: inline;
+margin-right: 10px;
+font-size: 20px;
+vertical-align: -2px;
+color: #303030;
+}
+.contact-list li {
+display: block;
+font-size: 18px;
+margin: 12px 2px;
+}
+.contact-title {
+font-size: 35px;
+line-height: 45px;
+color: #303030;
+}
 
 /*
 -----------------------------------------------
@@ -1247,41 +1276,14 @@ padding: 40px 40px 5px;
 text-align: center;
 margin: 25px 0;
 }
-.contact-title h4 {
-font-size: 35px;
-line-height: 45px;
-color: #303030;
-}
+
 .contact-title span {
 color: #606060;
 }
 .contact_list_wrapper {
 text-align: center;
 }
-.contact-list-info {
-list-style: none;
-padding: 0;
-margin: 0;
-text-align: center;
-}
-.contact_list_wrapper .contact-list-info li {
-padding: 0;
-padding-left: 15px;
-padding-right: 15px;
-display: inline-block;
-line-height: 25px;
-color: #606060;
-}
-.contact_list_wrapper .contact-list-info li i {
-display: inline;
-margin-right: 5px;
-font-size: 15px;
-vertical-align: -2px;
-color: #303030;
-}
-.contact_list_wrapper .contact-list-info li p {
-display: inline;
-}
+
 input#ContactForm1_contact-form-name, #ContactForm1_contact-form-email, #ContactForm1_contact-form-email:hover, #ContactForm1_contact-form-email:active {
 padding: 5px;
 margin-top: 4px !important;
