@@ -226,21 +226,21 @@ Estamos Online
 {{end}}
 <div class='flex-row flex-wrap' id="widget">
 
-  {{if .Widget.Valid}}
-    <div class='flex-column flex-grow'>
-     {{.Widget.String}}
+  {{if or .Contact.address .Contact.phone .Contact.whatsapp .Contact.email}}
+  <div class='contact-other flex-column flex-grow'>
+    <h1 class='contact-title' id="contacto">Contactanos</h1>
+    <ul class='contact-list'>
+    {{if .Contact.address}}<li><i class='lnr lnr-map'></i>{{.Contact.address}}</li>{{end}}
+    {{if .Contact.phone}}<li><i class='lnr lnr-phone'></i>{{.Contact.phone}}</li>{{end}}
+    {{if .Contact.whatsapp}}<li><i class='lnr lnr-phone-handset'></i>{{.Contact.whatsapp}}</li>{{end}}
+    {{if .Contact.email}}<li><i class='lnr lnr-envelope'></i>{{.Contact.email}}</li>{{end}}
+    </ul>
     </div>
   {{end}}
 
-  {{if or .Contact.address .Contact.phone .Contact.whatsapp .Contact.email}}
-  <div class='contact-other flex-column flex-grow'>
-    <h1 class='con-title' id="contacto">Contactanos</h1>
-    <ul class='con-list'>
-    {{if .Contact.address}}<li><i class='lnr lnr-map'></i>{{.Contact.address}}</li>{{end}}
-    {{if .Contact.phone}}<li><i class='lnr lnr-phone'></i>{{.Contact.phone}}</li>{{end}}
-    {{if .Contact.whatsapp}}<li><i class='lnr lnr-phone'></i>{{.Contact.whatsapp}}</li>{{end}}
-    {{if .Contact.email}}<li><i class='lnr lnr-envelope'></i>{{.Contact.email}}</li>{{end}}
-    </ul>
+  {{if .Widget.Valid}}
+    <div class='flex-column flex-grow'>
+     {{.Widget.String}}
     </div>
   {{end}}
 
