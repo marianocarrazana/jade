@@ -1,18 +1,25 @@
 .glide img{
   height:128px;
-  padding:2px 10px;
-  background:rgba(200,200,200,.3);
-  border-radius: 8px;
+  margin:2px 10px;
+  background:transparent;
+  transition: all .3s;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow:0 2px 3px rgba(50,50,50,.3);
+}
+.glide img:hover{
+  transform: scale(1.1);
+  box-shadow:0 0 0 rgba(50,50,50,.6);
 }
 .glide__slide{
   padding:4px;
   text-align: center;
 }
-.glide__slides>.glide__slide:nth-child(even) img{
+/*.glide__slides>.glide__slide:nth-child(even) img{
       background: rgba(55,55,55,.66);
-}
+}*/
 .glide{
   max-width:650px;
-  margin:90px auto 60px;
-  overflow: hidden;
+  height: 140px;
+  margin:60px auto 40px;
 }
