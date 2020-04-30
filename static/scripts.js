@@ -34,12 +34,12 @@ function play(){
   if(player.paused){
     player.play();
     peak.style.display = "block";
-    button.src = "https://fonts.gstatic.com/s/i/materialicons/pause/v4/24px.svg";
+    button.className = "icon-pause";
   }
   else {
     player.pause();
     peak.style.display = "none";
-    button.src = "https://fonts.gstatic.com/s/i/materialicons/play_arrow/v4/24px.svg";
+    button.className = "icon-play";
   }
 }
 

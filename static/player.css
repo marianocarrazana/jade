@@ -9,25 +9,38 @@
   position:absolute;
   border-radius:50px;
   box-shadow:-5px 4px 6px rgba(50,50,50,.3);
-  border:2px solid rgba(20,20,20,.8);
-  width:60px;height:60px;
+  border:none;
   padding:10px;
   font-weight:bold;
   background:white;
   color:black;
   z-index:2;
   left:0;
+  font-size: 45px;
+  text-shadow: 0 2px 3px grey;
+  cursor: pointer;
+  transition: all .3s;
+}
+#play_button:hover{
+  text-shadow: 1px 2px 4px black;
 }
 #slider{
   position:absolute;
   left:50px;bottom:3px;
   padding:2px 10px 0 25px;
   background:black;z-index:1;
-  border:2px solid white;
+  border:none;
   border-radius:0 25px 25px 0;
   color:white;
+  width: 120px;
+  opacity: .7;
+  transition: opacity .3s;
+}
+#slider:hover{
+  opacity: 1;
 }
 .slider {
+  margin:0;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 100px; /* Full-width */
@@ -35,16 +48,8 @@
   border-radius:5px;
   background: #555; /* Grey background */
   outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
-}
 
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
 }
-
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */

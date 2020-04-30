@@ -47,11 +47,11 @@ line-height: 25px;
 color: #606060;
 }
 .contact-list li i {
-display: inline;
-margin-right: 10px;
-font-size: 20px;
-vertical-align: -2px;
-color: #303030;
+  display: inline;
+  margin-right: 5px;
+  font-size: 24px;
+  vertical-align: -2px;
+  color: #303030;
 }
 .contact-list li {
 display: block;
@@ -63,7 +63,18 @@ font-size: 35px;
 line-height: 45px;
 color: #303030;
 }
-
+#Header_Title,.top-bar-social{
+  line-height: 1.4;
+  position: relative;
+}
+.widget {
+    line-height: 1.4;
+}
+.widget li, .BlogArchive #ArchiveList ul.flat li {
+    padding: .25em 0;
+    margin: 0;
+    text-indent: 0;
+}
 /*
 -----------------------------------------------
 Blogger Template Style
@@ -629,19 +640,6 @@ float: right
 }
 #menu ul ul {
 }
-/* ######## Header Css ######################### */
-.index #header-wrapper:after, .archive #header-wrapper:after {
-content: '';
-position: absolute;
-bottom: 0;
-height: 100px;
-width: 100%;
-background: url(//4.bp.blogspot.com/-U2FiDOW13h8/WaUuGbhbUpI/AAAAAAAADuQ/-tZACcQo3hYxUbXIe30RUfEMtIInpeiHACK4BGAYYCw/s1600/header-mask.png) no-repeat center;
-left: 0;
-right: 0;
-margin: 0 auto;
-background-size: cover;
-}
 #header-wrapper {
 text-align: center;
 padding:0;
@@ -652,6 +650,8 @@ height:100vh;
 box-sizing:border-box;
 position:relative;
 width: 100%;
+-webkit-clip-path: polygon(100% 0, 100% 92%, 50% 100%, 0 92%, 0 0);
+clip-path: polygon(100% 0, 100% 92%, 50% 100%, 0 92%, 0 0);
 }
 .index #header-wrapper {
 margin-bottom:0;
@@ -800,35 +800,7 @@ transition: background 0.3s linear;
 -webkit-transition: background 0.3s linear;
 -o-transition: background 0.3s linear;
 }
-.top-bar-social #social a:before {
-display: inline-block;
-font: normal normal normal 22px/1 FontAwesome;
-font-size: inherit;
-font-style: normal;
-font-weight: 400;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-}
-.top-bar-social .bloglovin:before{content:"\f004"}
-.top-bar-social .facebook:before{content:"\f09a"}
-.top-bar-social .twitter:before{content:"\f099"}
-.top-bar-social .gplus:before{content:"\f0d5"}
-.top-bar-social .rss:before{content:"\f09e"}
-.top-bar-social .youtube:before{content:"\f167"}
-.top-bar-social .skype:before{content:"\f17e"}
-.top-bar-social .stumbleupon:before{content:"\f1a4"}
-.top-bar-social .tumblr:before{content:"\f173"}
-.top-bar-social .vine:before{content:"\f1ca"}
-.top-bar-social .stack-overflow:before{content:"\f16c"}
-.top-bar-social .linkedin:before{content:"\f0e1"}
-.top-bar-social .dribbble:before{content:"\f17d"}
-.top-bar-social .soundcloud:before{content:"\f1be"}
-.top-bar-social .behance:before{content:"\f1b4"}
-.top-bar-social .digg:before{content:"\f1a6"}
-.top-bar-social .instagram:before{content:"\f16d"}
-.top-bar-social .pinterest:before{content:"\f0d2"}
-.top-bar-social .delicious:before{content:"\f1a5"}
-.top-bar-social .codepen:before{content:"\f1cb"}
+
 .top-bar-social .bloglovin{background:#ffbd2f}
 .top-bar-social .facebook{background:#3b5998}
 .top-bar-social .twitter{background:#00aced}

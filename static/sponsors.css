@@ -1,0 +1,18 @@
+.glide img{
+  height:128px;
+  padding:2px 10px;
+  background:rgba(200,200,200,.3);
+  border-radius: 8px;
+}
+.glide__slide{
+  padding:4px;
+  text-align: center;
+}
+.glide__slides>.glide__slide:nth-child(even) img{
+      background: rgba(55,55,55,.66);
+}
+.glide{
+  max-width:650px;
+  margin:90px auto 60px;
+  overflow: hidden;
+}
