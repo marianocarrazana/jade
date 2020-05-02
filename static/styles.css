@@ -75,6 +75,39 @@ color: #303030;
     margin: 0;
     text-indent: 0;
 }
+
+#share {
+  text-align: center;
+  font-size: 9px;
+  width: 100%;
+  transform:rotateZ(-90deg);
+  position:absolute;
+  left:-27px;top:45%;
+  background:white;
+  line-height:9px;
+  border-radius:3px;
+  padding:0 8px 0 5px;
+  text-align:center;
+}
+.a2a_floating_style{
+  left:10px;
+  top:40%;
+  background-color: black!important;
+  box-shadow: 1px 3px 4px rgba(0,0,0,.5);
+}
+.a2a_kit>a{transition:all .3s}
+.a2a_kit>a:hover{
+  border-radius:15px;
+}
+.a2a_button_facebook{
+  border-bottom:2px solid #53f;
+}
+.a2a_button_twitter{
+  border-bottom:2px solid #35f;
+}
+.a2a_button_whatsapp{
+  border-bottom:2px solid #5f3;
+}
 /*
 -----------------------------------------------
 Blogger Template Style
@@ -646,6 +679,7 @@ padding:0;
 background-attachment: fixed;
 background-size: cover;
 margin-bottom: 10px;
+height:640px;
 height:100vh;
 box-sizing:border-box;
 position:relative;

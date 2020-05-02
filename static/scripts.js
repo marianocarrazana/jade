@@ -16,6 +16,7 @@ document.body.onload = function (){
   css.type = "text/css";
   css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
   document.body.appendChild(css);
+  document.getElementById("a2a").style.display="block";
 }
 var header;
 function checkHeader(){
