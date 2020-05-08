@@ -108,6 +108,13 @@ color: #303030;
 .a2a_button_whatsapp{
   border-bottom:2px solid #5f3;
 }
+#app-link{
+  padding:20px 17px 0;
+  color:white;
+  font-weight: bold;
+  position:relative;
+}
+#app-link>.icon-android{color:lightgreen;}
 /*
 -----------------------------------------------
 Blogger Template Style
@@ -361,10 +368,10 @@ list-style: none;
 margin: 0;
 padding: 0;
 z-index: 999;
+text-align: right;
 }
 .scrolling-menu #nav li {
 display: inline-block;
-float: left;
 line-height: 1;
 list-style: none outside none;
 padding: 16px 17px;

@@ -29,6 +29,7 @@ type RadioPage struct {
     Domain string
     Name  string
     Contact map[string]interface{}
+    Apps map[string]interface{}
     RadioUrl sql.NullString
     Widget sql.NullString
     Sponsors Sponsors
@@ -78,7 +79,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
     var re = regexp.MustCompile(`(?m)^[\w\.]+`)
     var dom =  re.Find([]byte(r.Host))
     //log.Println(dom) 
-    selDB, err := db.Query("SELECT id,domain,name,radio_url,widget,contact,sponsors FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
+    selDB, err := db.Query("SELECT id,domain,name,radio_url,widget,contact,sponsors,apps FROM "+configuration["table"].(string)+" WHERE domain='"+string(dom)+"'")
     if err != nil {
         panic(err.Error())
     }
@@ -86,8 +87,8 @@ func Index(w http.ResponseWriter, r *http.Request) {
     if selDB.Next() {
         var id int
         var name, domain string
-        var radio_url,widget,contact,sponsors sql.NullString
-        err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &contact, &sponsors)
+        var radio_url,widget,contact,sponsors,apps sql.NullString
+        err = selDB.Scan(&id, &domain, &name, &radio_url, &widget, &contact, &sponsors, &apps)
         if err != nil {
                 panic(err.Error())
         }
@@ -105,12 +106,17 @@ func Index(w http.ResponseWriter, r *http.Request) {
                 List: []string{""},
             }
         }
-            
-
         if contact.Valid{
             json.Unmarshal([]byte(contact.String), &page.Contact)
         } else{
             page.Contact = map[string]interface{}{
+                "empty": true,
+            }
+        }
+        if apps.Valid{
+            json.Unmarshal([]byte(apps.String), &page.Apps)
+        } else{
+            page.Apps = map[string]interface{}{
                 "empty": true,
             }
         }

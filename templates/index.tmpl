@@ -65,9 +65,11 @@
 </div>
 <div class='scrolling-menu'>
 <ul id='nav'>
-<li class='current'><a href='#header-wrapper'>Inicio</a></li>
 <li><a href='#contacto'>Contactanos</a></li>
-</ul><div class='menu-mobile2'></div>
+</ul>
+{{if or .Apps.android .Apps.ios}}
+{{if .Apps.android}}<a href="{{.App.android}}" id="app-link" class='menu-mobile2' download>Descarga nuestra App<i class="icon-android"></i></a>{{end}}
+{{end}}
 </div>
 <div class='tm-menu'>
 <div class='menu-wrap'>

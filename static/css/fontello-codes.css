@@ -5,6 +5,9 @@
 .icon-phone:before { content: '\e803'; } /* '' */
 .icon-volume-off:before { content: '\e804'; } /* '' */
 .icon-address:before { content: '\e805'; } /* '' */
+.icon-android:before { content: '\e806'; } /* '' */
+.icon-macstore:before { content: '\e807'; } /* '' */
+.icon-location:before { content: '\e808'; } /* '' */
 .icon-chat:before { content: '\f03d'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */
 .icon-facebook:before { content: '\f09a'; } /* '' */
