@@ -19,6 +19,9 @@
   margin:10px;
   text-align:center;
 }
+.flex-space-around{
+    justify-content: space-around;
+}
 #widget{
   max-width:1280px;
   margin:10px auto;
@@ -45,6 +48,7 @@ padding-right: 15px;
 display: inline-block;
 line-height: 25px;
 color: #606060;
+min-width: 350px;
 }
 .contact-list li i {
   display: inline;
